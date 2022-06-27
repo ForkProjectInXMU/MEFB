@@ -23,7 +23,7 @@ addpath('./metrics');
 addpath('./util');
 addpath('./methods');
 
-path = 'Your own path to MEFB\output';
+path = 'C:\github\MEFB\output\';
 fusedPath = [path '\fused_images\'];
 outputPath = [path '\evaluation_metrics\'];
 outputPathSingle = [path '\evaluation_metrics_single\'];
@@ -36,16 +36,20 @@ if ~exist(outputPathSingle,'dir')
     mkdir(outputPathSingle);
 end
 
-imgs = configImgs;
+% choose the dataset
+imgs = configImgs_MEFB;
+% disp(imgs);
 
 methods = configMethods;
 metrics = configMetrics;
+% disp(methods);
+% disp(metrics);
 
 numImgs=length(imgs);
 numMethods=length(methods);
 numMetrics=length(metrics);
 
-% output information
+% output configs to information.txt
 fid=fopen(strcat(path, '\information.txt'),'w');
 fprintf(fid,'%15s\r\n','The image paris are:');
 for i=1:numImgs
@@ -65,6 +69,7 @@ for i=1:numMetrics
 end
 fclose(fid);
 
+
 Asualization = 0;
 resultsMetrics = zeros(numImgs, numMethods, numMetrics);
             
@@ -74,8 +79,8 @@ for idxMethod=1:numMethods
     for idxImgs=1:length(imgs)
         s = imgs{idxImgs};
 
-        sA.img = strcat(s.path,s.name, '_A.',s.ext);
-        sB.img = strcat(s.path,s.name, '_B.',s.ext);
+        sA.img = strcat(s.path,'ue\',s.name,'.',s.ext);
+        sB.img = strcat(s.path,'oe\',s.name,'.',s.ext);
 
         imgA = imread(sA.img);
         imgB = imread(sB.img);
@@ -87,8 +92,8 @@ for idxMethod=1:numMethods
             
             sMetrics = metrics{idxMetrics};
         
-            fusedName = [fusedPath s.name '_' m.name '.' s.ext];
-            if exist([fusedPath s.name '_' m.name '.' s.ext])
+            fusedName = [fusedPath m.name '\' s.name '.' s.ext];
+            if exist(fusedName)
                 sFused = imread(fusedName);              
                 % check whether the result exists
                 if exist(strcat(outputPathSingle,s.name, '_', m.name,'_',sMetrics.name ,'.txt'))    
