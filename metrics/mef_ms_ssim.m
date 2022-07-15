@@ -59,7 +59,6 @@ function [oQ, Q, qMap] = mef_ms_ssim(imgSeq, fI, K, window, level, weight)
 %
 %========================================================================
 
-
 if (nargin < 2 || nargin > 6)
    oQ = -Inf;
    Q = -Inf;
