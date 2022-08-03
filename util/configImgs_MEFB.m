@@ -12,7 +12,7 @@
 
 function imgs=configImgs_MEFB
 
-    path = 'C:\data\MEFB\';
+    path = 'C:\data\MEFB_256\';
 
     imgs = {struct('name', '1','path',path,'ext','png'),...
 struct('name', '2','path',path,'ext','png'),...

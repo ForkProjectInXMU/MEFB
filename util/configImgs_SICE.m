@@ -12,7 +12,7 @@
 
 function imgs=configImgs_SICE
 
-    path = 'C:\data\SICE\test_512\';
+    path = 'C:\data\SICE_256\test\';
 
     imgs = {struct('name', '1','path',path,'ext','png'),...
 struct('name', '2','path',path,'ext','png'),...
