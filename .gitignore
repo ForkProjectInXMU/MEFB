@@ -6,3 +6,5 @@
 output/information.txt
 *.txt
 *.mat
+*.xml
+*.iml
