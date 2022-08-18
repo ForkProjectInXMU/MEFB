@@ -37,7 +37,8 @@ if ~exist(outputPathSingle,'dir')
 end
 
 % choose the dataset
-imgs = configImgs_SICE;
+% imgs = configImgs_SICE;
+imgs = configImgs_MEFB;
 % disp(imgs);
 
 methods = configMethods;

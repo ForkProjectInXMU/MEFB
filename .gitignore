@@ -8,3 +8,4 @@ output/information.txt
 *.mat
 *.xml
 *.iml
+*.asv
